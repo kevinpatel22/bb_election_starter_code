@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
     const ul = document.querySelector("#candidates");
-    const vform = document.querySelector(".v-form");
     
     axios.get("https://bb-election-api.herokuapp.com/")
     .then(response => {
@@ -28,7 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
             hiddeninput.name = "name";
             hiddeninput.value = candidate.name;
             form.appendChild(hiddeninput);
+        
         });
+        
+        const vform = document.querySelector(".v-form")
         
         vform.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -47,14 +49,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(error);
             })
         })
-  
     })
     .catch (error => {
         console.log(error)
     })
+
     const refreshbtn = document.querySelector('#refreshbtn')
     refreshbtn.addEventListener('click', () => {
         location.reload();
     })
-    
 });
